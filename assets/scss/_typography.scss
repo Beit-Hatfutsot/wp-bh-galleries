@@ -155,4 +155,15 @@ blockquote {}
 			background-color: $blue-color6;
 		}
 	}
+
+	&.fb-share-button {
+		padding: 0;
+
+		a {
+			padding: 7px 24px;
+			color: $font-invert-color;
+			text-decoration: none;
+			display: block;
+		}
+	}
 }

@@ -46,6 +46,7 @@ function BH_upload_photo() {
 		'country'			=> '',
 		'year'				=> '',
 		'subjects'			=> [],
+		'url'				=> '',
 	);
 
 	// include wordpress core files
@@ -169,10 +170,10 @@ function BH_upload_photo() {
 		$image_data			= str_replace( ' ', '+', $image_data );
 		$data				= base64_decode( $image_data );
 
-		$file				= UPLOAD_DIR . $id . '-img.' . $image_ext;
+		$file				= UPLOAD_TMP_PATH . $id . '-img.' . $image_ext;
 		$image_result		= file_put_contents( $file, $data );
 
-		$public_file		= PUBLIC_UPLOAD_DIR . $id . '-img.' . $image_ext;
+		$public_file		= UPLOAD_TMP_DIR . $id . '-img.' . $image_ext;
 
 		if ( $image_result !== false ) :
 
@@ -194,6 +195,9 @@ function BH_upload_photo() {
 
 			unlink( $file );
 
+			// update result with url
+			$result[ 'url' ] = UPLOAD_DIR . '/' . $id . '-img.' . $image_ext;
+
 		endif;
 
 		if ( ! is_wp_error( $image_attachment_result ) && $thumbnail ) :
@@ -207,10 +211,10 @@ function BH_upload_photo() {
 			$image_data			= str_replace( ' ', '+', $image_data );
 			$data				= base64_decode( $image_data );
 
-			$file				= UPLOAD_DIR . $id . '-thumb.' . $image_ext;
+			$file				= UPLOAD_TMP_PATH . $id . '-thumb.' . $image_ext;
 			$thumb_result		= file_put_contents( $file, $data );
 
-			$public_file		= PUBLIC_UPLOAD_DIR . $id . '-thumb.' . $image_ext;
+			$public_file		= UPLOAD_TMP_DIR . $id . '-thumb.' . $image_ext;
 
 			if ( $thumb_result !== false ) :
 

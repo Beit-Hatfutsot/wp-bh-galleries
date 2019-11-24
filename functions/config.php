@@ -27,14 +27,15 @@ define( 'VERSION', $theme_version );
 // other
 define( 'TEMPLATE',				get_bloginfo( 'template_directory' ) );
 define( 'HOME',					home_url( '/' ) );
-define( 'UPLOAD_DIR',			ABSPATH . 'wp-content/uploads_temp/' );
-define( 'PUBLIC_UPLOAD_DIR',	HOME . 'wp-content/uploads_temp/' );
+define( 'UPLOAD_TMP_PATH',		ABSPATH . 'wp-content/uploads_temp/' );
+define( 'UPLOAD_TMP_DIR',		HOME . 'wp-content/uploads_temp/' );
+define( 'UPLOAD_DIR',			wp_get_upload_dir()[ 'url' ] );
 define( 'CSS_DIR',				TEMPLATE . '/assets/css' );
 define( 'JS_DIR',				TEMPLATE . '/assets/js' );
 
 // create upload_temp
-if ( ! file_exists( UPLOAD_DIR ) ) {
-	mkdir( UPLOAD_DIR, 0755, true );
+if ( ! file_exists( UPLOAD_TMP_PATH ) ) {
+	mkdir( UPLOAD_TMP_PATH, 0755, true );
 }
 
 /**

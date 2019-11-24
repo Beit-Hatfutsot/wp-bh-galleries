@@ -63,17 +63,16 @@ if ( function_exists( 'pll_register_string' ) ) :
 	pll_register_string( 'Form Description Description',			'pll_form_description_description',				'Upload');
 
 	// step 3
-	pll_register_string( 'Facebook Logged In Msg',					'pll_facebook_logged_in',						'Upload');
-	pll_register_string( 'Facebook App Logged In Msg',				'pll_facebook_app_logged_in',					'Upload');
-	pll_register_string( 'Facebook Logged Out Msg',					'pll_facebook_logged_out',						'Upload');
 
 	// upload general
 	pll_register_string( 'Terms of Use Label',						'pll_terms_of_use_label',						'Upload');
 	pll_register_string( 'Terms of Use Name',						'pll_terms_of_use_name',						'Upload');
-	pll_register_string( 'Next',									'pll_next',										'Upload');
 	pll_register_string( 'Clear',									'pll_clear',									'Upload');
+	pll_register_string( 'Next',									'pll_next',										'Upload');
 	pll_register_string( 'Cancel',									'pll_cancel',									'Upload');
 	pll_register_string( 'Upload',									'pll_upload',									'Upload');
+	pll_register_string( 'No, thanks',								'pll_no_thanks',								'Upload');
+	pll_register_string( 'Share',									'pll_share',									'Upload');
 
 	// filters
 	pll_register_string( 'Country Filter Label',					'pll_country_filter_label',						'Filters');
