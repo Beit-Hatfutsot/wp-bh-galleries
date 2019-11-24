@@ -1,0 +1,43 @@
+{
+    "key": "group_acf_options_general",
+    "title": "Options - General",
+    "fields": [
+        {
+            "key": "field_53283f319551f",
+            "label": "Google Analytics Tracking Code",
+            "name": "acf-options_google_analytics_tracking_code",
+            "type": "textarea",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "new_lines": "",
+            "rows": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options-general"
+            }
+        ]
+    ],
+    "menu_order": 14,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1574087438
+}

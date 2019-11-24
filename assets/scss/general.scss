@@ -1,0 +1,124 @@
+@import "functions";
+@import "typography";
+
+@charset "utf-8";
+
+/******************/
+/* general layout */
+/******************/
+
+* {
+	@include reset;
+}
+
+html,
+body {
+	height: 100%;
+}
+
+body {
+	@include font;
+	font-size: 13px;
+	color: $font-color;
+	background-color: $bg-color;
+}
+
+/********/
+/* logo */
+/********/
+
+.desktop-logo {
+	.logo-wrap {
+		position: fixed;
+		top: 100px;
+		left: 50%;
+		margin-left: -107px;
+		width: 214px;
+		height: 102px;
+		background-color: $content-bg;
+		z-index: 1000;
+
+		.logo {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 214px;
+			height: 102px;
+			@include image("general/logo-en.png", $position: 50% 50%);
+		}
+	}
+}
+
+/****************/
+/* page content */
+/****************/
+
+.main-content header,
+.sidebar-filters {
+	display: none;
+}
+
+.page-content {
+	height: 100%;
+
+	&:before,
+	&:after {
+		display: table;
+		content: " ";
+	}
+
+	&:after {
+		clear: both;
+	}
+
+	#query-loader-container {
+		position: relative;
+		top: 50%;
+		text-align: center;
+		@include transform(translateY(-50%));
+	}
+}
+
+/************/
+/* fancybox */
+/************/
+
+#fancybox-wrap {
+	box-sizing: content-box;
+
+	#fancybox-outer {
+		-webkit-box-shadow: -3px 3px 5px rgba(50, 50, 50, 0.4) !important;
+		-moz-box-shadow: -3px 3px 5px rgba(50, 50, 50, 0.4) !important;
+		box-shadow: -3px 3px 5px rgba(50, 50, 50, 0.4) !important;
+		-webkit-border-radius: 15px !important;
+		-moz-border-radius: 15px !important;
+		border-radius: 5px !important;
+		border: 3px solid #939598;
+		box-sizing: content-box;
+	}
+
+	#fancybox-content {
+		width: auto !important;
+		box-sizing: content-box;
+
+		div:first-child {
+			max-width: 100%;
+			max-height: 100%;
+		}
+	}
+}
+
+/*************/
+/* not found */
+/*************/
+
+.not_found {
+	padding-top: 100px;
+	text-align: center;
+}
+
+/**************/
+/* responsive */
+/**************/
+
+@import "responsive";

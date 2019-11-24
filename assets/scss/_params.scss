@@ -1,0 +1,74 @@
+/*************/
+/* variables */
+/*************/
+
+$images:	"../images/";
+$fonts:		"../fonts/";
+
+$default_fonts: Arial, Helvetica, Sans-serif;
+
+/*******************/
+/* admin variables */
+/*******************/
+
+$admin-images:	"../../images/admin/";
+
+/**********/
+/* colors */
+/**********/
+
+$white:			#FFF;
+$black:			#000;
+$white-opac1:	rgba($white, 0.8);
+$white-opac2:	rgba($white, 0.2);
+
+$blue-color1:	#E1FAFE;
+$blue-color2:	#0e3f9f;
+$blue-color3:	#6eb7bc;
+$blue-color4:	#c8edf2;
+$blue-color5:	#B6E2E9;
+$blue-color6:	#00BBD0;
+
+$red-color1:	#a63011;
+
+$orange-color1:	#f9af37;
+
+$black-color1:	#333;
+$black-color2:	#6c6c6c;
+$black-color3:	#dfdfdf;
+$black-color4:	#707070;
+
+/***************/
+/* backgrounds */
+/***************/
+
+$bg-color:		$white;
+$content-bg:	$white;
+$footer-bg:		$white;
+
+$form-field-bg:	$white;
+
+/**************/
+/* typography */
+/**************/
+
+$font-color:			$black;
+$font-invert-color:		$white;
+
+$link-color:			$black-color2;
+$link-hover-color:		$black-color1;
+
+$read-more-link:		$black-color2;
+$read-more-link-hover:	$black-color1;
+
+$font-normal:			400;
+$font-bold:				700;
+
+$border-color:			$black-color3;
+
+/*********/
+/* forms */
+/*********/
+
+$panel-border-color:	$black-color2;
+$panel-heading-color:	$black-color2;

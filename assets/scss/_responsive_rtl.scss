@@ -1,0 +1,55 @@
+@import "functions";
+
+@media (max-width: 1199px) {}
+
+@media (max-width: 991px) {}
+
+@media (max-width: 767px) {
+
+	/***************/
+	/* header main */
+	/***************/
+
+	.navbar {
+
+		/************************/
+		/* header upload button */
+		/************************/
+
+		.upload {
+			.content {
+				float: left;
+			}
+		}
+	}
+}
+
+@media (max-width: 480px) {}
+
+@media (min-width: 1200px) {}
+
+@media (min-width: 992px) {}
+
+@media (min-width: 992px) and (max-width: 1199px) {}
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+	/***************/
+	/* header main */
+	/***************/
+
+	.navbar {
+
+		/**********************/
+		/* header description */
+		/**********************/
+
+		.header-description {
+			margin-left: 177px !important;
+		}
+	}
+}
+
+@media (min-width: 481px) and (max-width: 991px) {}
+
+@media (min-width: 481px) and (max-width: 767px) {}

@@ -1,0 +1,321 @@
+@import "functions";
+
+@media (max-width: 1199px) {}
+
+@media (max-width: 991px) {}
+
+@media (max-width: 767px) {
+
+	/******************/
+	/* general layout */
+	/******************/
+
+	body {
+		padding-top: 60px;
+	}
+
+	/*******************/
+	/* sidebar filters */
+	/*******************/
+
+	.sidebar-filters {
+		top: 0;
+		height: 100%;
+
+		&.sidebar-offcanvas {
+			&.sidebar-offcanvas-left {
+				left: -214px;
+
+				&.active {
+					left: 0;
+				}
+			}
+
+			&.sidebar-offcanvas-right {
+				right: -214px;
+
+				&.active {
+					right: 0;
+				}
+			}
+		}
+
+		select {
+			width: 100%;
+		}
+
+		/***********/
+		/* bh logo */
+		/***********/
+
+		.bh-logo {
+			position: static;
+		}
+	}
+
+	/****************/
+	/* main content */
+	/****************/
+
+	.main-content {
+		width: 100%;
+
+		&.content-offcanvas {
+			&.content-offcanvas-left {
+				margin-left: 0;
+
+				&.active {
+					margin-left: 214px;
+				}
+			}
+
+			&.content-offcanvas-right {
+				margin-right: 0;
+
+				&.active {
+					margin-right: 214px;
+				}
+			}
+		}
+	}
+
+	/***************/
+	/* header main */
+	/***************/
+
+	.navbar {
+		width: 100%;
+		height: 60px;
+		border-bottom: 2px solid $border-color;
+
+		.content-offcanvas-left & {
+			left: 0;
+		}
+
+		.content-offcanvas-left.active & {
+			left: 214px;
+		}
+
+		.content-offcanvas-right & {
+			right: 0;
+		}
+
+		.content-offcanvas-right.active & {
+			right: 214px;
+			left: auto;
+		}
+
+		/************************/
+		/* header upload button */
+		/************************/
+
+		.upload {
+			width: 59px;
+			height: 100%;
+
+			.content {
+				float: right;
+				width: 54px;
+				background-color: $content-bg;
+			}
+		}
+	}
+
+	/***************/
+	/* upload form */
+	/***************/
+
+	.upload-form {
+		top: 60px;
+
+		&.content-offcanvas-left.active {
+			left: 214px;
+		}
+
+		&.content-offcanvas-right.active {
+			right: 214px;
+		}
+
+		.form-header {
+			.form-title {
+				font-size: 12px;
+			}
+
+			.step-indicator-wrap {
+				font-size: 12px;
+			}
+
+			.step-title-wrap {
+				margin: 50px 0 -10px !important;
+				font-size: 12px;
+				clear: both;
+			}
+		}
+
+		.step-content {
+			.step3 {
+				.photo-details {
+					margin-top: 20px;
+					padding: 0 !important;
+
+					.photo-details-fields {
+						width: 100% !important;
+
+						select {
+							width: 100%;
+						}
+
+						.photo-details-group {
+							width: 100% !important;
+							padding: 0 !important;
+							min-height: 0 !important;
+						}
+					}
+
+					.photo-details-preview {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+
+	/***************/
+	/* images grid */
+	/***************/
+
+	.images-grid {
+		.loader {
+			margin: 0 !important;
+		}
+	}
+}
+
+@media (max-width: 480px) {
+
+	/***************/
+	/* upload form */
+	/***************/
+
+	.upload-form {
+		.step-content {
+			.step1 {
+				#drag-drop-area {
+					width: 100% !important;
+
+					.drag-drop-inside {
+
+						.drag-drop-info {
+							font-size: 20px !important;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: 1200px) {}
+
+@media (min-width: 992px) {}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+
+	/***************/
+	/* header main */
+	/***************/
+
+	.navbar {
+
+		/**********************/
+		/* header description */
+		/**********************/
+
+		.header-description {
+			& > .content {
+				font-size: 16px !important;
+			}
+		}
+	}
+
+	/**************/
+	/* typography */
+	/**************/
+
+	h1 {
+		.navbar & {
+			font-size: 26px;
+		}
+	}
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+	/***************/
+	/* header main */
+	/***************/
+
+	.navbar {
+
+		/************************/
+		/* header upload button */
+		/************************/
+
+		.upload {
+			width: 177px !important;
+		}
+
+		/**********************/
+		/* header description */
+		/**********************/
+
+		.header-description {
+			margin-right: 177px !important;
+
+			& > .content {
+				padding-left: 10px;
+				padding-right: 10px;
+				font-size: 16px !important;
+			}
+		}
+	}
+
+	/**************/
+	/* typography */
+	/**************/
+
+	h1 {
+		.navbar & {
+			font-size: 22px;
+		}
+	}
+
+	/***************/
+	/* upload form */
+	/***************/
+
+	.upload-form {
+		.step-content {
+			.step3 {
+				.photo-details {
+					margin-top: 20px;
+					padding: 0 !important;
+
+					.photo-details-fields {
+						.photo-details-group {
+							width: 50% !important;
+						}
+
+						.photo-details-group3 {
+							width: 100% !important;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: 481px) and (max-width: 991px) {}
+
+@media (min-width: 481px) and (max-width: 767px) {}

@@ -1,0 +1,328 @@
+@import "functions";
+@import "typography";
+
+@charset "utf-8";
+
+/********/
+/* logo */
+/********/
+
+.desktop-logo {
+	.logo-wrap {
+		.logo {
+			@include image("general/logo-he.png", $position: 50% 50%);
+		}
+	}
+}
+
+/*******************/
+/* sidebar filters */
+/*******************/
+
+.sidebar-filters {
+	@include transition(right);
+
+	/*****************/
+	/* chosen fields */
+	/*****************/
+
+	.chosen-container {
+		.chosen-single {
+			padding: 0 8px 0 0;
+
+			span {
+				margin-left: 26px;
+				margin-right: 0;
+			}
+
+			div {
+				left: 0;
+				right: auto;
+			}
+		}
+
+		.chosen-drop {
+			left: auto;
+			right: -9999px;
+
+			.chosen-results {
+				.no-results {
+					direction: ltr;
+					text-align: left;
+				}
+			}
+		}
+
+		&.chosen-with-drop {
+			.chosen-drop {
+				left: auto;
+				right: 0;
+			}
+		}
+
+		.chosen-choices {
+			.search-field {
+				float: right;
+			}
+
+			.search-choice {
+				float: right;
+				margin: 3px 5px 3px 0;
+			}
+		}
+	}
+}
+
+/****************/
+/* main content */
+/****************/
+
+.main-content {
+	@include transition(margin-right);
+}
+
+/***************/
+/* header main */
+/***************/
+
+.navbar {
+	@include transition(right);
+
+	/*****************/
+	/* navbar toggle */
+	/*****************/
+
+	.navbar-toggle {
+		float: right;
+		margin: 14px 14px 0 0;
+	}
+
+	/************************/
+	/* header upload button */
+	/************************/
+
+	.upload {
+		float: left;
+
+		.diagonal {
+			float: right;
+			border-top: 0;
+			border-right: 80px solid transparent;
+			border-bottom: 101px solid $blue-color5;
+		}
+
+		.content {
+			float: right;
+
+			.camera {
+				left: auto;
+				right: 12px;
+				@include image("general/camera-he.png");
+			}
+
+			.lang {
+				left: 0;
+				right: auto;
+			}
+		}
+	}
+}
+
+/***************/
+/* upload form */
+/***************/
+
+.upload-form {
+	@include transition(right);
+
+	/***************/
+	/* form header */
+	/***************/
+
+	.form-header {
+		.form-title {
+			float: right;
+			text-align: right;
+		}
+
+		.step-indicator-wrap {
+			float: left;
+			text-align: left;
+		}
+	}
+
+	/****************/
+	/* step content */
+	/****************/
+
+	.step-content {
+		.step {
+
+			/**************/
+			/* submit btn */
+			/**************/
+
+			.btn-submit {
+				.submit-step {
+					float: left;
+				}
+
+				.loader {
+					left: -42px;
+					right: auto;
+				}
+
+				.clear {
+					float: right;
+				}
+			}
+
+			/**********/
+			/* step 3 */
+			/**********/
+
+			&.step3 {
+				.photo-details {
+					.photo-details-fields {
+						float: right;
+
+						.photo-details-group {
+							float: right;
+
+							.field-wrap {
+								&.required {
+									&:before {
+										left: auto;
+										right: -18px;
+									}
+
+									span.glyphicon {
+										left: -27px;
+										right: auto;
+									}
+								}
+
+								& > label {
+									padding-left: 0;
+									padding-right: 10px;
+								}
+
+								& > span {
+									padding-left: 0;
+									padding-right: 10px;
+								}
+
+								/*****************/
+								/* chosen fields */
+								/*****************/
+
+								.chosen-container {
+									.chosen-single {
+										padding: 0 8px 0 0;
+
+										span {
+											margin-left: 26px;
+											margin-right: 0;
+										}
+
+										div {
+											left: 0;
+											right: auto;
+										}
+									}
+
+									.chosen-drop {
+										left: auto;
+										right: -9999px;
+
+										.chosen-results {
+											.no-results {
+												direction: ltr;
+												text-align: left;
+											}
+										}
+									}
+
+									&.chosen-with-drop {
+										.chosen-drop {
+											left: auto;
+											right: 0;
+										}
+									}
+
+									.chosen-choices {
+										.search-field {
+											float: right;
+										}
+
+										.search-choice {
+											float: right;
+											margin: 12px 3px 3px 0;
+										}
+									}
+								}
+							}
+						}
+					}
+
+					.photo-details-preview {
+						float: left;
+						text-align: left;
+					}
+				}
+			}
+		}
+	}
+}
+
+/***************/
+/* images grid */
+/***************/
+
+.images-grid {
+	.loader {
+		margin-left: auto;
+		margin-right: -214px;
+	}
+
+	ul {
+		li {
+			float: right;
+
+			&.expanded {
+				.photo-image {
+					float: right;
+					padding-left: 30px;
+					padding-right: 0;
+
+					img {
+						padding-left: 30px;
+						padding-right: 0;
+						border-left: 1px solid rgba(112,112,112,.5);
+						border-right: 0;
+					}
+				}
+
+				.photo-details {
+					.photo-meta {
+						.subjects,
+						.country {
+							float: right;
+						}
+					}
+				}
+
+				.close-photo {
+					left: 10px;
+					right: auto;
+				}
+			}
+		}
+	}
+}
+
+/**************/
+/* responsive */
+/**************/
+
+@import "responsive_rtl";
