@@ -460,7 +460,7 @@ var $ = jQuery,
 
 				setTimeout(function(){
 					initSelection();
-				}, BH_general.params.duration);
+				}, BH_general.params.duration * 2);
 
 				result = true;
 
@@ -488,6 +488,7 @@ var $ = jQuery,
 			reader.onload = function(e) {
 
 				var div = document.createElement('div');
+				div.className = 'image-wrapper';
 				div.innerHTML = '<img src="' + reader.result + '" />';
 				elem.append(div);
 

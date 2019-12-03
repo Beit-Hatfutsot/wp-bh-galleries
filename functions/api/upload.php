@@ -196,7 +196,11 @@ function BH_upload_photo() {
 			unlink( $file );
 
 			// update result with url
-			$result[ 'url' ] = UPLOAD_DIR . '/' . $id . '-img.' . $image_ext;
+			// $result[ 'url' ] = UPLOAD_DIR . '/' . $id . '-img.' . $image_ext;
+
+			// define url as HOME
+			// @todo pass filters parametrers in query string in order to activate filters automatically
+			$result[ 'url' ] = HOME;
 
 		endif;
 
