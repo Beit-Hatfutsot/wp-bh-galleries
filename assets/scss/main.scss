@@ -451,6 +451,18 @@ body {
 
 				#terms-content {
 					display: none;
+
+					ul, ol {
+						padding-left: 30px;
+
+						li {
+							margin-bottom: 10px;
+						}
+
+						ul, ol {
+							margin-top: 10px;
+						}
+					}
 				}
 			}
 
