@@ -15,6 +15,19 @@
 	}
 }
 
+/************/
+/* fancybox */
+/************/
+
+#fancybox-wrap {
+	#fancybox-content {
+		ul, ol {
+			padding-left: 0;
+			padding-right: 30px;
+		}
+	}
+}
+
 /*******************/
 /* sidebar filters */
 /*******************/
@@ -174,17 +187,6 @@
 
 				.clear {
 					float: right;
-				}
-
-				/****************/
-				/* terms of use */
-				/****************/
-
-				#terms-content {
-					ul, ol {
-						padding-left: 0;
-						padding-right: 30px;
-					}
 				}
 			}
 
