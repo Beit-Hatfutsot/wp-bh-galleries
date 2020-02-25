@@ -14,8 +14,10 @@ h1 {
 	font-weight: normal;
 
 	.navbar & {
-		margin-top: 21px;
-		margin-bottom: 0;
+		margin: 0;
+		line-height: 101px;
+		color: $font-color;
+		display: inline-block;
 	}
 }
 

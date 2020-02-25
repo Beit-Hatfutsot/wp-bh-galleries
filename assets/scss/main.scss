@@ -286,13 +286,37 @@ body {
 	/**********************/
 
 	.header-description {
+		position: relative;
 		margin-left: 257px;
 		margin-right: 257px;
 		height: 101px;
 
+		& > .menu {
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 100;
+
+			ul {
+				margin: 0;
+				line-height: 101px;
+				list-style: none;
+
+				li {
+					a {
+						padding: 5px 10px;
+						font-size: 14px;
+						color: $white;
+						background: $blue-color6;
+						@include border-radius(5px);
+						text-decoration: none;
+					}
+				}
+			}
+		}
+
 		& > .content {
 			position: relative;
-			padding-top: 10px;
 			height: 100%;
 			line-height: normal;
 			color: $font-color;

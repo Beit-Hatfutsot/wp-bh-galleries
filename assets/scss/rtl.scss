@@ -139,6 +139,17 @@
 			}
 		}
 	}
+
+	/**********************/
+	/* header description */
+	/**********************/
+
+	.header-description {
+		& > .menu {
+			left: auto;
+			right: 0;
+		}
+	}
 }
 
 /***************/
