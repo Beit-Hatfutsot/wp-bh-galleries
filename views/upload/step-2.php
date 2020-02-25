@@ -4,7 +4,7 @@
  *
  * @author		Nir Goldberg
  * @package		views/upload
- * @version		1.0.0
+ * @version		1.1.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -169,11 +169,13 @@ $upload_nonce = wp_create_nonce( 'upload_photo' );
 
 				</div>
 
-				<div class="field-wrap">
+				<div class="field-wrap required">
 
 					<label for="description"><?php echo $desc_label ?: ''; ?></label>
 					<textarea id="description" placeholder="<?php echo $desc_placeholder ?: ''; ?>"></textarea>
 					<span><?php echo $desc_description ?: ''; ?></span>
+					<span class="glyphicon glyphicon-ok-circle hidden"></span>
+					<span class="glyphicon glyphicon-remove-circle hidden"></span>
 
 				</div>
 			</div>

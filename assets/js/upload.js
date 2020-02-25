@@ -144,7 +144,7 @@ var $ = jQuery,
 
 			// form validation indicators
 			// required input fields
-			$('.step2 .field-wrap.required input').keyup(function() {
+			$('.step2 .field-wrap.required input, .step2 .field-wrap.required textarea').keyup(function() {
 				if ($(this).val().length < 3) {
 					$(this).parent().find('.glyphicon-remove-circle').removeClass('hidden');
 					$(this).parent().find('.glyphicon-ok-circle').addClass('hidden');
