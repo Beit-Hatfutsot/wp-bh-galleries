@@ -4,7 +4,7 @@
  *
  * @author		Nir Goldberg
  * @package		functions
- * @version		1.0.0
+ * @version		1.1.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -80,12 +80,13 @@ function BH_wp_scripts_n_styles() {
 	wp_enqueue_script( 'sidebar_filters',	JS_DIR . '/min/sidebar_filters.min.js',		        array( 'jquery', 'bootstrap' ),		VERSION,	true );
 
 	// localize general
-	$translation_arr	= array(
-		'ajaxurl'		=> admin_url( 'admin-ajax.php' ),
-		'settings'		=> array(
+	$translation_arr		= array(
+		'ajaxurl'			=> admin_url( 'admin-ajax.php' ),
+		'settings'			=> array(
 			'template'		=> TEMPLATE,
 			'lang'			=> function_exists( 'pll_current_language' ) ? pll_current_language() : '',
 		),
+		'subjects_logos'	=> BH_get_subjects_logos(),
 	);
 
 	if ( function_exists( 'pll__' ) ) {

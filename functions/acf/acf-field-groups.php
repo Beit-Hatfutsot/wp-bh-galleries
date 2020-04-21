@@ -4,7 +4,7 @@
  *
  * @author		Nir Goldberg
  * @package		functions
- * @version		1.0.0
+ * @version		1.1.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -247,6 +247,92 @@ acf_add_local_field_group(array(
 	'hide_on_screen' => '',
 	'active' => true,
 	'description' => '',
+	'modified' => 1574087416,
+));
+
+acf_add_local_field_group(array(
+	'key' => 'group_5e9eaebdc7114',
+	'title' => 'Subject Attributes',
+	'fields' => array(
+		array(
+			'key' => 'field_5e9eaef93ffb8',
+			'label' => 'Logos',
+			'name' => 'acf-subject_logos',
+			'type' => 'repeater',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'collapsed' => '',
+			'min' => 0,
+			'max' => 0,
+			'layout' => 'table',
+			'button_label' => 'Add Logo',
+			'sub_fields' => array(
+				array(
+					'key' => 'field_5e9eaf263ffb9',
+					'label' => 'Logo',
+					'name' => 'logo',
+					'type' => 'image',
+					'instructions' => '',
+					'required' => 1,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'return_format' => 'url',
+					'preview_size' => 'thumbnail',
+					'library' => 'all',
+					'min_width' => '',
+					'min_height' => '',
+					'min_size' => '',
+					'max_width' => '',
+					'max_height' => '',
+					'max_size' => '',
+					'mime_types' => 'jpg,jpeg,png',
+				),
+				array(
+					'key' => 'field_5e9eaf613ffba',
+					'label' => 'Link',
+					'name' => 'link',
+					'type' => 'url',
+					'instructions' => '',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'default_value' => '',
+					'placeholder' => '',
+				),
+			),
+		),
+	),
+	'location' => array(
+		array(
+			array(
+				'param' => 'taxonomy',
+				'operator' => '==',
+				'value' => 'subject',
+			),
+		),
+	),
+	'menu_order' => 2,
+	'position' => 'normal',
+	'style' => 'default',
+	'label_placement' => 'top',
+	'instruction_placement' => 'label',
+	'hide_on_screen' => '',
+	'active' => true,
+	'description' => '',
 ));
 
 acf_add_local_field_group(array(
@@ -290,6 +376,7 @@ acf_add_local_field_group(array(
 	'hide_on_screen' => '',
 	'active' => true,
 	'description' => '',
+	'modified' => 1574087425,
 ));
 
 acf_add_local_field_group(array(
@@ -352,6 +439,7 @@ acf_add_local_field_group(array(
 	'hide_on_screen' => '',
 	'active' => true,
 	'description' => '',
+	'modified' => 1574087431,
 ));
 
 acf_add_local_field_group(array(
@@ -395,6 +483,7 @@ acf_add_local_field_group(array(
 	'hide_on_screen' => '',
 	'active' => true,
 	'description' => '',
+	'modified' => 1574087438,
 ));
 
 endif;

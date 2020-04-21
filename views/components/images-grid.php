@@ -4,7 +4,7 @@
  *
  * @author		Nir Goldberg
  * @package		views/components
- * @version		1.0.0
+ * @version		1.1.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -45,6 +45,7 @@ $lang = ( isset( $_POST[ 'lang' ] ) && $_POST[ 'lang' ] ) ? $_POST[ 'lang' ] : $
 					$subjects		= get_the_terms( $photo, 'subject' );
 					$country		= get_the_terms( $photo, 'country' );
 
+					$subjects_ids = array();
 					$subjects_str = '';
 					$subjects_parents_str = '';
 
@@ -53,6 +54,7 @@ $lang = ( isset( $_POST[ 'lang' ] ) && $_POST[ 'lang' ] ) ? $_POST[ 'lang' ] : $
 							// get subject language
 							if ( ! function_exists( 'pll_get_term_language' ) || $lang == pll_get_term_language( $subject->term_id ) ) {
 
+								$subjects_ids[] = $subject->term_id;
 								$subjects_str .= ( ( $subjects_str ) ? ', ' : '' ) . $subject->name;
 								$subjects_parents_str .= ( ( $subjects_parents_str ) ? ', ' : '' ) . get_term_by( 'id', $subject->parent, 'subject' )->name;
 
@@ -67,6 +69,7 @@ $lang = ( isset( $_POST[ 'lang' ] ) && $_POST[ 'lang' ] ) ? $_POST[ 'lang' ] : $
 						'title'					=> $title,
 						'year'					=> $year,
 						'description'			=> $description,
+						'subjects_ids'			=> $subjects_ids,
 						'subjects'				=> $subjects_str,
 						'subjects_parents'		=> $subjects_parents_str,
 						'country'				=> $country ? $country[0]->name : '',

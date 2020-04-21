@@ -3,7 +3,7 @@
  * Functions
  *
  * @author		Nir Goldberg
- * @version		1.1
+ * @version		1.1.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -34,6 +34,9 @@ if ( is_admin() ) {
 // post types
 require_once( 'functions/post-types.php' );
 require_once( 'functions/taxonomies.php' );
+
+// subjects
+require_once( 'functions/subjects.php' );
 
 // localization
 require_once( 'functions/localization.php' );

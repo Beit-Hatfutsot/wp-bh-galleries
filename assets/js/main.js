@@ -75,7 +75,9 @@ var $ = jQuery,
 			expanded_li.className = 'expanded';
 			expanded_li.style.display = 'none';
 
-			var photo_data = JSON.parse(photo.attr('photo-data'));
+			var photo_data = JSON.parse(photo.attr('photo-data')),
+				subjects_ids = photo_data['subjects_ids'],
+				subjects_logos = subjects_ids ? get_subjects_logos(subjects_ids) : '';
 
 			var expanded_li_content =
 				'<div class="photo-image">' +
@@ -86,10 +88,11 @@ var $ = jQuery,
 					( (photo_data['title']) ? '<h2>' + photo_data['title'] + '</h2>' : '' ) +
 					'<div class="user-meta">' + _BH_General.strings.by_str + ' <span class="user">' + photo_data['user_name'] + '</span>, <span class="year">' + photo_data['year'] + '</span></div>' +
 					'<div class="photo-meta">' +
-						( (photo_data['subjects_parents']) ? '<div class="subjects">' + _BH_General.strings.subject_str + ': ' + photo_data['subjects_parents'] + ' |&nbsp;</div>' : '' ) +
+						( (photo_data['subjects_parents']) ? '<div class="subjects">' + _BH_General.strings.subject_str + ': ' + photo_data['subjects'] + ' |&nbsp;</div>' : '' ) +
 						'<div class="country">' + _BH_General.strings.country_str + ': ' + photo_data['country'] + '</div>' +
 					'</div>' +
 					( (photo_data['description']) ? '<div class="description">' + photo_data['description'] + '</div>' : '' ) +
+					( subjects_logos ? '<div class="subjects-logos">' + subjects_logos + '</div>' : '' ) +
 				'</div>' +
 
 				'<div class="close-photo"><span class="glyphicon glyphicon-remove"></span></div>';
@@ -117,6 +120,45 @@ var $ = jQuery,
 				}, BH_general.params.duration);
 
 			}, BH_general.params.duration);
+
+		};
+
+		/**
+		 * get_subjects_logos
+		 *
+		 * Returns HTML merkup for subjects logos
+		 *
+		 * @since		1.1.2
+		 * @param		subjects_ids (array)
+		 * @return		(string)
+		 */
+		var get_subjects_logos = function(subjects_ids) {
+
+			// vars
+			var output = '';
+
+			if (subjects_ids) {
+				$.each(subjects_ids, function(i, id) {
+					if (id in _BH_General.subjects_logos && _BH_General.subjects_logos[id].logos.length) {
+						output += '<ul id="subject-logos-' + id + '" class="subject-logos">';
+
+						$.each(_BH_General.subjects_logos[id].logos, function(j, logo) {
+							if (logo.logo) {
+								output += '<li>';
+								output += logo.link.length ? '<a href="' + logo.link + '" target="_blank">' : '';
+								output += '<img src="' + logo.logo + '" />';
+								output += logo.link.length ? '</a>' : '';
+								output += '</li>';
+							}
+						});
+
+						output += '</ul>';
+					}
+				});
+			}
+
+			// return
+			return output;
 
 		};
 
