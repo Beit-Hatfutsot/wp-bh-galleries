@@ -4,7 +4,7 @@
  *
  * @author		Nir Goldberg
  * @package		views/header
- * @version		1.0.0
+ * @version		1.2.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -43,5 +43,12 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	<![endif]-->
 
 	<?php wp_head(); ?>
+
+	<?php
+		/**
+		 * Display Facebook Pixel code
+		 */
+		get_template_part( 'views/header/header', 'fb' );
+	?>
 
 </head>

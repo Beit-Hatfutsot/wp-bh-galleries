@@ -20,6 +20,25 @@
             "maxlength": "",
             "new_lines": "",
             "rows": ""
+        },
+        {
+            "key": "field_5f60664348551",
+            "label": "Facebook Pixel Code",
+            "name": "acf-options_facebook_pixel_code",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
         }
     ],
     "location": [
@@ -39,5 +58,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1574087438
+    "modified": 1600153229
 }

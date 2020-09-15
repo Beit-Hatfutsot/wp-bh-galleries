@@ -4,7 +4,7 @@
  *
  * @author		Nir Goldberg
  * @package		functions
- * @version		1.1.2
+ * @version		1.2.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -465,6 +465,25 @@ acf_add_local_field_group(array(
 			'new_lines' => '',
 			'rows' => '',
 		),
+		array(
+			'key' => 'field_5f60664348551',
+			'label' => 'Facebook Pixel Code',
+			'name' => 'acf-options_facebook_pixel_code',
+			'type' => 'textarea',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '',
+			'placeholder' => '',
+			'maxlength' => '',
+			'rows' => '',
+			'new_lines' => '',
+		),
 	),
 	'location' => array(
 		array(
@@ -483,7 +502,6 @@ acf_add_local_field_group(array(
 	'hide_on_screen' => '',
 	'active' => true,
 	'description' => '',
-	'modified' => 1574087438,
 ));
 
 endif;
