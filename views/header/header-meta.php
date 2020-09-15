@@ -13,6 +13,13 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 <head>
 
+	<?php
+		/**
+		 * Display Google Analytics tracking code
+		 */
+		get_template_part( 'views/header/header', 'analytics' );
+	?>
+
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">

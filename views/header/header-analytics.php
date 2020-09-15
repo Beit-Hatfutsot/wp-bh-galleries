@@ -4,7 +4,7 @@
  *
  * @author		Nir Goldberg
  * @package		views/header
- * @version		1.0.0
+ * @version		1.2.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -14,9 +14,19 @@ if ( ! function_exists( 'get_field' ) )
 
 $analytics_tracking_code = get_field( 'acf-options_google_analytics_tracking_code', 'option' );
 
-if ( $analytics_tracking_code ) : ?>
+if ( ! $analytics_tracking_code )
+	return;
 
-	<!-- Google Analytics -->
-	<?php echo $analytics_tracking_code;
+?>
 
-endif;
+<!-- Google Analytics -->
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+	ga('create', '<?php echo $analytics_tracking_code; ?>', 'auto');
+	ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->

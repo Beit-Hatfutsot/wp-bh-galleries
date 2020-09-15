@@ -3,7 +3,7 @@
  * Theme header
  *
  * @author		Nir Goldberg
- * @version		1.0.0
+ * @version		1.2.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -21,13 +21,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	<body <?php body_class(); ?>>
 
 		<?php wp_body_open(); ?>
-
-		<?php
-			/**
-			 * Display Google Analytics tracking code
-			 */
-			get_template_part( 'views/header/header', 'analytics' );
-		?>
 
 		<?php
 			/**
