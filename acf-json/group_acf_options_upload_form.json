@@ -3,6 +3,28 @@
     "title": "Options - Upload Form",
     "fields": [
         {
+            "key": "field_5f7b596cf2ef1",
+            "label": "Competition Subject",
+            "name": "acf-options_competition_subject",
+            "type": "taxonomy",
+            "instructions": "Pick a sub-subject from the list",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "subject",
+            "field_type": "select",
+            "allow_null": 1,
+            "add_term": 0,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "id",
+            "multiple": 0
+        },
+        {
             "key": "field_53171b11d9f86",
             "label": "Terms of Use Content",
             "name": "acf-options_en_terms_of_use_content",
@@ -58,5 +80,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1574087431
+    "modified": 1601924704
 }

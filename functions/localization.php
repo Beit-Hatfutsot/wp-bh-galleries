@@ -4,7 +4,7 @@
  *
  * @author		Nir Goldberg
  * @package		functions
- * @version		1.0.0
+ * @version		1.2.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -29,6 +29,7 @@ if ( function_exists( 'pll_register_string' ) ) :
 	pll_register_string( 'Step#1 Title',							'pll_step1_title',								'Upload');
 	pll_register_string( 'Step#2 Title',							'pll_step2_title',								'Upload');
 	pll_register_string( 'Step#3 Title',							'pll_step3_title',								'Upload');
+	pll_register_string( 'Step#4 Title',							'pll_step4_title',								'Upload');
 	pll_register_string( 'Step Indicator',							'pll_step_indicator',							'Upload');
 
 	// step 1
@@ -61,8 +62,26 @@ if ( function_exists( 'pll_register_string' ) ) :
 	pll_register_string( 'Form Description Label',					'pll_form_description_label',					'Upload');
 	pll_register_string( 'Form Description Placeholder',			'pll_form_description_placeholder',				'Upload');
 	pll_register_string( 'Form Description Description',			'pll_form_description_description',				'Upload');
+	pll_register_string( 'Form Competition Label',					'pll_form_competition_label',					'Upload');
+	pll_register_string( 'Form Competition Placeholder',			'pll_form_competition_placeholder',				'Upload');
+	pll_register_string( 'Form Competition Description',			'pll_form_competition_description',				'Upload');
 
 	// step 3
+	pll_register_string( 'Form Institution Label',					'pll_form_institution_label',					'Upload');
+	pll_register_string( 'Form Institution Placeholder',			'pll_form_institution_placeholder',				'Upload');
+	pll_register_string( 'Form Institution Description',			'pll_form_institution_description',				'Upload');
+	pll_register_string( 'Form City Label',							'pll_form_city_label',							'Upload');
+	pll_register_string( 'Form City Placeholder',					'pll_form_city_placeholder',					'Upload');
+	pll_register_string( 'Form City Description',					'pll_form_city_description',					'Upload');
+	pll_register_string( 'Form Coordinator Name Label',				'pll_form_coordinator_name_label',				'Upload');
+	pll_register_string( 'Form Coordinator Name Placeholder',		'pll_form_coordinator_name_placeholder',		'Upload');
+	pll_register_string( 'Form Coordinator Name Description',		'pll_form_coordinator_name_description',		'Upload');
+	pll_register_string( 'Form Coordinator Email Label',			'pll_form_coordinator_email_label',				'Upload');
+	pll_register_string( 'Form Coordinator Eamil Placeholder',		'pll_form_coordinator_email_placeholder',		'Upload');
+	pll_register_string( 'Form Coordinator Email Description',		'pll_form_coordinator_email_description',		'Upload');
+	pll_register_string( 'Form Age Label',							'pll_form_age_label',							'Upload');
+	pll_register_string( 'Form Age Placeholder',					'pll_form_age_placeholder',						'Upload');
+	pll_register_string( 'Form Age Description',					'pll_form_age_description',						'Upload');
 
 	// upload general
 	pll_register_string( 'Terms of Use Label',						'pll_terms_of_use_label',						'Upload');

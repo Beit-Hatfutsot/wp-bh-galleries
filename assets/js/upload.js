@@ -39,6 +39,13 @@ var $ = jQuery,
 			year						: '',
 			description					: '',
 
+			// step 3
+			institution					: '',
+			city						: '',
+			coordinator_name			: '',
+			coordinator_email			: '',
+			age							: '',
+
 		};
 
 		/**
@@ -52,11 +59,13 @@ var $ = jQuery,
 
 			initStep1();
 			initStep2();
+			initStep3();
 
 			// trigger steps actions
 			$('.btn-submit-step1 .submit-step').click(step1);
 			$('.btn-submit-step2 .submit-step').click(step2);
 			$('.btn-submit-step3 .submit-step').click(step3);
+			$('.btn-submit-step4 .submit-step').click(step4);
 
 			$('.btn-submit .clear').click(function() {
 
@@ -69,6 +78,9 @@ var $ = jQuery,
 				setTimeout(function(){
 
 					switch (className) {
+						case 'btn-submit btn-submit-step4' :
+							clearStep(4);
+
 						case 'btn-submit btn-submit-step3' :
 							clearStep(3);
 
@@ -153,7 +165,7 @@ var $ = jQuery,
 					$(this).parent().find('.glyphicon-ok-circle').removeClass('hidden');
 				}
 
-				validate_form();
+				validate_form(2);
 			});
 
 			// validate unassigned subjects field
@@ -166,7 +178,7 @@ var $ = jQuery,
 					$('select#subject').parent().find('.glyphicon-ok-circle').removeClass('hidden');
 				}
 
-				validate_form();
+				validate_form(2);
 			});
 
 			// required chosen fields
@@ -177,7 +189,7 @@ var $ = jQuery,
 						$(this).parent().find('.glyphicon-remove-circle').removeClass('hidden');
 						$(this).parent().find('.glyphicon-ok-circle').addClass('hidden');
 
-						validate_form();
+						validate_form(2);
 
 						// return
 						return;
@@ -188,7 +200,7 @@ var $ = jQuery,
 				$(this).parent().find('.glyphicon-remove-circle').addClass('hidden');
 				$(this).parent().find('.glyphicon-ok-circle').removeClass('hidden');
 
-				validate_form();
+				validate_form(2);
 			});
 
 			// update unassigned subjects field value according to chosen:no_results event
@@ -207,8 +219,67 @@ var $ = jQuery,
 						$(this).parent().find('.glyphicon-ok-circle').removeClass('hidden');
 					}
 
-					validate_form();
+					validate_form(2);
 				}
+			});
+
+			// competition checkbox toggling
+			var competition_cb = $('.step2 #competition'),
+				competitionStep = $('.step2 .submit-step-next'),
+				uploadStep = $('.step2 .submit-step-upload');
+
+			competition_cb.on('change', function() {
+				if ($(this).prop('checked')) {
+					// expose 'next' button to step 3
+					competitionStep.show();
+					uploadStep.hide();
+				}
+				else {
+					// expose 'upload' button to step 4
+					competitionStep.hide();
+					uploadStep.show();
+				}
+			});
+
+		};
+
+		/**
+		 * initStep3
+		 *
+		 * @since		1.0.0
+		 * @param		N/A
+		 * @return		N/A
+		 */
+		var initStep3 = function() {
+
+			// init form chosen fields
+			$('.step3 .chosen-select').chosen({
+				enable_split_word_search	: true,
+				search_contains				: true,
+				width						: '100%'
+			});
+
+			// form validation indicators
+			// required input fields
+			$('.step3 .field-wrap.required input').keyup(function() {
+				if ($(this).val().length < 3) {
+					$(this).parent().find('.glyphicon-remove-circle').removeClass('hidden');
+					$(this).parent().find('.glyphicon-ok-circle').addClass('hidden');
+				} else {
+					$(this).parent().find('.glyphicon-remove-circle').addClass('hidden');
+					$(this).parent().find('.glyphicon-ok-circle').removeClass('hidden');
+				}
+
+				validate_form(3);
+			});
+
+			// required chosen fields
+			$('.step3 .chosen-select').on('change', function(evt, params) {
+				// single select or multiple select with at least 1 value
+				$(this).parent().find('.glyphicon-remove-circle').addClass('hidden');
+				$(this).parent().find('.glyphicon-ok-circle').removeClass('hidden');
+
+				validate_form(3);
 			});
 
 		};
@@ -239,55 +310,38 @@ var $ = jQuery,
 		 * step2
 		 *
 		 * @since		1.0.0
-		 * @param		N/A
+		 * @param		e (jQuery event)
 		 * @return		N/A
 		 */
-		var step2 = function() {
+		var step2 = function(e) {
 
-			// disable upload button
-			$('.btn-submit-step2 .submit-step').unbind('click');
+			// store step inputs
+			params.name					= $('.step2 input#name').val();
+			params.email				= $('.step2 input#email').val();
+			params.country				= $('.step2 select#country').val();
+			params.subjects				= $('.step2 select#subject').val();
+			params.unassigned_subjects	= $('.step2 input#unassigned_subjects').val();
+			params.title				= $('.step2 input#title').val();
+			params.year					= $('.step2 select#year').val();
+			params.description			= $('.step2 #description').val();
 
-			$('.btn-submit-step2 .loader').show();
+			// get target button
+			var target = $(e.target);
 
-			$.ajax({
-				type: 'post',
-				dataType: 'json',
-				url: _BH_General.ajaxurl,
-				data: {
-					action					: 'upload_photo',
-					nonce					: $('.step2').data('nonce'),
-					image					: params.resized_img,
-					thumbnail				: params.thumbnail,
-					name					: $('.step2 input#name').val(),
-					email					: $('.step2 input#email').val(),
-					country					: $('.step2 select#country').val(),
-					subjects				: $('.step2 select#subject').val(),
-					unassigned_subjects		: $('.step2 input#unassigned_subjects').val(),
-					title					: $('.step2 input#title').val(),
-					year					: $('.step2 select#year').val(),
-					description				: $('.step2 #description').val(),
-					lang					: _BH_General.settings.lang,
-				},
-				success: function(response) {
-					if (!$.isEmptyObject(response)) {
-						if (response.status == 0 || response.status == 1) {
-							// prepare facebook Share
-							prepareFbShare(response.url);
+			if (target.hasClass('submit-step-next')) {
+				transition(3);
+			}
+			else {
+				// disable upload button
+				$('.btn-submit-step2 .submit-step').unbind('click');
 
-							// clear upload proccess
-							transition(3);
+				$('.btn-submit-step2 .loader').show();
 
-							// reload images grid with new uploaded image
-							BH_filters.set(response.country, response.year, response.subjects);
-						} else {
-							// showMsg(1, params.step1_upload_failed_msg);
-						}
-					}
-				},
-				complete: function(jqXHR, textStatus) {
-					$('.btn-submit-step2 .loader').hide();
-				}
-			});
+				uploadPhoto(2);
+
+				// enable upload button
+				$('.btn-submit-step2 .submit-step').click(step2);
+			}
 
 		};
 
@@ -300,11 +354,40 @@ var $ = jQuery,
 		 */
 		var step3 = function() {
 
+			// disable upload button
+			$('.btn-submit-step3 .submit-step').unbind('click');
+
 			$('.btn-submit-step3 .loader').show();
 
-			$('.btn-submit-step3 .loader').hide();
+			// store step inputs
+			params.institution			= $('.step3 input#institution').val();
+			params.city					= $('.step3 input#city').val();
+			params.coordinator_name		= $('.step3 input#coordinator_name').val();
+			params.coordinator_email	= $('.step3 input#coordinator_email').val();
+			params.age					= $('.step3 select#age').val();
+
+			uploadPhoto(3);
+
+			// enable upload button
+			$('.btn-submit-step3 .submit-step').click(step3);
+
+		};
+
+		/**
+		 * step4
+		 *
+		 * @since		1.0.0
+		 * @param		N/A
+		 * @return		N/A
+		 */
+		var step4 = function() {
+
+			$('.btn-submit-step4 .loader').show();
+
+			$('.btn-submit-step4 .loader').hide();
 
 			transition(1);
+			clearStep(4);
 			clearStep(3);
 			clearStep(2);
 			clearStep(1);
@@ -455,7 +538,8 @@ var $ = jQuery,
 
 				previewImage(file, $('.step1 .image-preview'));
 				previewImage(file, $('.step2 .photo-details-preview'));
-				previewImage(file, $('.step3 .photo-share-preview'));
+				previewImage(file, $('.step3 .photo-details-preview'));
+				previewImage(file, $('.step4 .photo-share-preview'));
 				resizeImage(file);
 
 				setTimeout(function(){
@@ -621,23 +705,23 @@ var $ = jQuery,
 
 		};
 
-		/********************/
-		/* step 2 functions */
-		/********************/
+		/**********************/
+		/* step 2/3 functions */
+		/**********************/
 
 		/**
 		 * validate_form
 		 *
 		 * @since		1.0.0
-		 * @param		N/A
+		 * @param		step (int)
 		 * @return		N/A
 		 */
-		var validate_form = function() {
+		var validate_form = function(step) {
 
 			// get number of invalid fields
-			var not_valid_fields = $('.step2 .field-wrap.required .glyphicon-ok-circle.hidden').length;
+			var not_valid_fields = $('.step'+step+' .field-wrap.required .glyphicon-ok-circle.hidden').length;
 
-			(not_valid_fields) ? $('.btn-submit-step2').slideUp(BH_general.params.duration) : $('.btn-submit-step2').slideDown(BH_general.params.duration);
+			(not_valid_fields) ? $('.btn-submit-step'+step).slideUp(BH_general.params.duration) : $('.btn-submit-step'+step).slideDown(BH_general.params.duration);
 
 		};
 
@@ -655,8 +739,65 @@ var $ = jQuery,
 
 		};
 
+		/**
+		 * uploadPhoto
+		 *
+		 * @since		1.0.0
+		 * @param		step (int)
+		 * @return		N/A
+		 */
+		var uploadPhoto = function(step) {
+
+			$.ajax({
+				type: 'post',
+				dataType: 'json',
+				url: _BH_General.ajaxurl,
+				data: {
+					action					: 'upload_photo',
+					step					: step,
+					nonce					: $('.step'+step).data('nonce'),
+					image					: params.resized_img,
+					thumbnail				: params.thumbnail,
+					name					: params.name,
+					email					: params.email,
+					country					: params.country,
+					subjects				: params.subjects,
+					unassigned_subjects		: params.unassigned_subjects,
+					title					: params.title,
+					year					: params.year,
+					description				: params.description,
+					institution				: params.institution,
+					city					: params.city,
+					coordinator_name		: params.coordinator_name,
+					coordinator_email		: params.coordinator_email,
+					age						: params.age,
+					lang					: _BH_General.settings.lang,
+				},
+				success: function(response) {
+					if (!$.isEmptyObject(response)) {
+						if (response.status == 0 || response.status == 1) {
+							// prepare facebook Share
+							prepareFbShare(response.url);
+
+							// clear upload proccess
+							transition(4);
+
+							// reload images grid with new uploaded image
+							BH_filters.set(response.country, response.year, response.subjects);
+						} else {
+							// showMsg(1, params.step1_upload_failed_msg);
+						}
+					}
+				},
+				complete: function(jqXHR, textStatus) {
+					$('.btn-submit-step'+step+' .loader').hide();
+				}
+			});
+
+		};
+
 		/********************/
-		/* step 3 functions */
+		/* step 4 functions */
 		/********************/
 
 		/**
@@ -669,7 +810,7 @@ var $ = jQuery,
 		var prepareFbShare = function(url) {
 
 			// vars
-			var btn = $('.btn-submit-step3 .fb-share-button');
+			var btn = $('.btn-submit-step4 .fb-share-button');
 
 			// facebook share button
 			btn.attr('data-href', url);
@@ -776,6 +917,16 @@ var $ = jQuery,
 
 				case 2 :	// step2
 
+					// reset inputs
+					params.name					= '';
+					params.email				= '';
+					params.country				= '';
+					params.subjects				= '';
+					params.unassigned_subjects	= '';
+					params.title				= '';
+					params.year					= '';
+					params.description			= '';
+
 					// slideUp submit button
 					$('.btn-submit-step2').slideUp(BH_general.params.duration);
 
@@ -786,26 +937,55 @@ var $ = jQuery,
 					$('.step2 .chosen-select option').prop('selected', false);
 					$('.step2 .chosen-select').trigger('chosen:updated');
 
+					// reset competition checkbox
+					$('.step2 #competition').prop('checked', false);
+
 					// remove validation indicators
 					$('.step2 .glyphicon-remove-circle').addClass('hidden');
 					$('.step2 .glyphicon-ok-circle').addClass('hidden');
 
-					// enable upload button
-					$('.btn-submit-step2 .submit-step').click(step2);
+					// reset next/upload buttons
+					$('.step2 .submit-step-next').hide();
+					$('.step2 .submit-step-upload').show();
 
 					break;
 
 				case 3 :	// step3
 
+					// reset inputs
+					params.institution			= '';
+					params.city					= '';
+					params.coordinator_name		= '';
+					params.coordinator_email	= '';
+					params.age					= '';
+
+					// slideUp submit button
+					$('.btn-submit-step3').slideUp(BH_general.params.duration);
+
+					// reset common fields
+					$('.step3 input').val('');
+
+					// reset chosen fields
+					$('.step3 .chosen-select option').prop('selected', false);
+					$('.step3 .chosen-select').trigger('chosen:updated');
+
+					// remove validation indicators
+					$('.step3 .glyphicon-remove-circle').addClass('hidden');
+					$('.step3 .glyphicon-ok-circle').addClass('hidden');
+
+					break;
+
+				case 4 :	// step4
+
 					break;
 
 				case 'other' :	// other content to remove
 
-					// remove image preview content within step2
-					$('.step2 .photo-details-preview').html('');
+					// remove image preview content within step2/3
+					$('.step2 .photo-details-preview, .step3 .photo-details-preview').html('');
 
-					// remove image preview content within step3
-					$('.step3 .photo-share-preview').html('');
+					// remove image preview content within step4
+					$('.step4 .photo-share-preview').html('');
 
 			}
 

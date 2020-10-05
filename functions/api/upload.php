@@ -4,7 +4,7 @@
  *
  * @author		Nir Goldberg
  * @package		api
- * @version		1.0.0
+ * @version		1.2.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -20,14 +20,15 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  */
 function BH_upload_photo() {
 
+	// vars
+	$step					= $_REQUEST[ 'step' ];
+
 	// check nonce
-	if ( ! wp_verify_nonce( $_REQUEST[ 'nonce' ], 'upload_photo' ) ) {
+	if ( ! $step || ! wp_verify_nonce( $_REQUEST[ 'nonce' ], 'upload_photo_step' . $step ) ) {
 		exit();
 	}
 
-	/**
-	 * Variables
-	 */
+	// vars
 	$image					= $_REQUEST[ 'image' ];
 	$thumbnail				= $_REQUEST[ 'thumbnail' ];
 	$name					= $_REQUEST[ 'name' ];
@@ -38,7 +39,18 @@ function BH_upload_photo() {
 	$title					= $_REQUEST[ 'title' ];
 	$year					= $_REQUEST[ 'year' ];
 	$description			= $_REQUEST[ 'description' ];
+	$institution			= $_REQUEST[ 'institution' ];
+	$city					= $_REQUEST[ 'city' ];
+	$coordinator_name		= $_REQUEST[ 'coordinator_name' ];
+	$coordinator_email		= $_REQUEST[ 'coordinator_email' ];
+	$age					= $_REQUEST[ 'age' ];
 	$lang					= $_REQUEST[ 'lang' ];
+	$competition_subject	= 3 == $step && function_exists( 'get_field' ) ? get_field( 'acf-options_competition_subject', 'option' ) : '';
+
+	// add $competition_subject to $subjects
+	if ( $competition_subject && is_array( $subjects ) && ! in_array( $competition_subject, $subjects ) ) {
+		$subjects[] = $competition_subject;
+	}
 
 	$result = array(
 		'status'			=> '',
@@ -89,8 +101,13 @@ function BH_upload_photo() {
 		update_field( 'field_5dcc6bf175747', sanitize_text_field( $title ),	$post_id );
 		update_field( 'field_5dcc6c5c75748', sanitize_text_field( $year ),	$post_id );
 
-		if ( $unassigned_subjects )		update_field( 'field_52f7857bac76a', $unassigned_subjects,						$post_id );
-		if ( $description )				update_field( 'field_52f758e0c9b98', sanitize_textarea_field( $description ),	$post_id );
+		if ( $unassigned_subjects )		update_field( 'field_52f7857bac76a', $unassigned_subjects,							$post_id );
+		if ( $description )				update_field( 'field_52f758e0c9b98', sanitize_textarea_field( $description ),		$post_id );
+		if ( $institution )				update_field( 'field_5f7aeca4bd05b', sanitize_textarea_field( $institution ),		$post_id );
+		if ( $city )					update_field( 'field_5f7aecd3bd05c', sanitize_textarea_field( $city ),				$post_id );
+		if ( $coordinator_name )		update_field( 'field_5f7aecf2bd05d', sanitize_textarea_field( $coordinator_name ),	$post_id );
+		if ( $coordinator_email )		update_field( 'field_5f7aed24bd05e', sanitize_textarea_field( $coordinator_email ),	$post_id );
+		if ( $age )						update_field( 'field_5f7aed4ebd05f', sanitize_textarea_field( $age ),				$post_id );
 
 		// country post taxonomy
 		$country = sanitize_text_field( $country );
@@ -103,8 +120,8 @@ function BH_upload_photo() {
 			if ( is_wp_error( $term ) ) {
 
 				// build result
-				$result[ 'status' ]	= $post_id->get_error_code();
-				$result[ 'msg' ]	= $post_id->get_error_message();
+				$result[ 'status' ]	= $term->get_error_code();
+				$result[ 'msg' ]	= $term->get_error_message();
 
 				$result = json_encode( $result );
 				echo $result;

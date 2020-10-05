@@ -435,7 +435,7 @@ body {
 					clear: both;
 				}
 
-				&.btn-submit-step3 {
+				&.btn-submit-step4 {
 					display: block !important;
 				}
 
@@ -560,11 +560,12 @@ body {
 				}
 			}
 
-			/**********/
-			/* step 2 */
-			/**********/
+			/************/
+			/* step 2/3 */
+			/************/
 
-			&.step2 {
+			&.step2,
+			&.step3 {
 				.photo-details {
 					padding: 0 10px;
 
@@ -630,12 +631,22 @@ body {
 									display: block;
 								}
 
+								& > label.cb-label {
+									padding-left: 41px;
+									font-size: 13px;
+								}
+
 								& > span {
 									margin-bottom: 35px;
 									padding-left: 10px;
 									font-size: 12px;
 									color: $font-color;
 									display: block;
+
+									a {
+										color: $font-color;
+										text-decoration: underline;
+									}
 								}
 
 								/*****************/
@@ -655,11 +666,15 @@ body {
 								& > textarea {
 									padding: 10px;
 									width: 100%;
-									height: 160px;
+									height: 165px;
 									background-color: $form-field-bg;
 									border: 1px solid $black-color4;
 									@include border-radius(7px);
 									resize: none;
+								}
+
+								input[type="checkbox"] {
+									@include checkbox-style;
 								}
 
 								/*****************/
@@ -667,15 +682,15 @@ body {
 								/*****************/
 
 								.chosen-container {
-									min-height: 43px;
-									line-height: 43px;
+									min-height: 41px;
+									line-height: 41px;
 									background-color: $form-field-bg;
 									border: 1px solid $black-color4;
 									@include border-radius(7px);
 
 									.chosen-single {
-										height: 43px;
-										line-height: 43px;
+										height: 41px;
+										line-height: 41px;
 										background: transparent;
 										border: none;
 										box-shadow: none;
@@ -700,7 +715,7 @@ body {
 									}
 
 									.chosen-choices {
-										height: 43px;
+										height: 41px;
 										background: transparent;
 										border: none;
 
@@ -736,10 +751,10 @@ body {
 			}
 
 			/**********/
-			/* step 3 */
+			/* step 4 */
 			/**********/
 
-			&.step3 {
+			&.step4 {
 				.photo-share-preview {
 					margin: 0 auto;
 					max-width: 350px;

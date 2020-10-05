@@ -131,3 +131,37 @@
 	#{$property}: -webkit-calc(#{$expression});
 	#{$property}: calc(#{$expression});
 }
+
+@mixin checkbox-style() {
+	position: relative;
+	margin: 0 10px 0 -31px;
+	padding: 0;
+	width: 18px;
+	height: 18px;
+	line-height: initial;
+	vertical-align: text-top;
+	@include border-radius(2px);
+	border: 1px solid #707070;
+	outline: 0;
+	box-sizing: border-box;
+	display: inline-block;
+	-webkit-appearance: none;
+
+	&:before {
+		content: "";
+		position: absolute;
+		top: 1px;
+		right: 5px;
+		width: 6px;
+		height: 11px;
+		@include transform(rotate(45deg));
+		border-style: solid;
+		border-color: #E1FAFE;
+		border-width: 0 2px 2px 0;
+	}
+
+	&:checked {
+		border-color: #000;
+		background-color: #000;
+	}
+}

@@ -4,7 +4,7 @@
  *
  * @author		Nir Goldberg
  * @package		views/upload
- * @version		1.1.1
+ * @version		1.2.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -47,6 +47,10 @@ $desc_label							= pll__( 'pll_form_description_label' );
 $desc_placeholder					= pll__( 'pll_form_description_placeholder' );
 $desc_description					= pll__( 'pll_form_description_description' );
 
+$competition_label					= pll__( 'pll_form_competition_label' );
+$competition_placeholder			= pll__( 'pll_form_competition_placeholder' );
+$competition_description			= pll__( 'pll_form_competition_description' );
+
 if ( function_exists( 'get_field' ) ) {
 
 	$terms_of_use_label				= pll__( 'pll_terms_of_use_label' );
@@ -56,10 +60,11 @@ if ( function_exists( 'get_field' ) ) {
 }
 
 $upload								= pll__( 'pll_upload' );
+$next								= pll__( 'pll_next' );
 $cancel								= pll__( 'pll_cancel' );
 
 // generate nonce values
-$upload_nonce = wp_create_nonce( 'upload_photo' );
+$upload_nonce = wp_create_nonce( 'upload_photo_step2' );
 
 ?>
 
@@ -147,9 +152,7 @@ $upload_nonce = wp_create_nonce( 'upload_photo' );
 					<span class="glyphicon glyphicon-remove-circle hidden"></span>
 
 				</div>
-			</div>
 
-			<div class="photo-details-group photo-details-group3">
 				<div class="field-wrap required">
 
 					<label for="year"><?php echo $year_label ?: ''; ?></label>
@@ -166,9 +169,10 @@ $upload_nonce = wp_create_nonce( 'upload_photo' );
 					<span><?php echo $year_description ?: ''; ?></span>
 					<span class="glyphicon glyphicon-ok-circle hidden"></span>
 					<span class="glyphicon glyphicon-remove-circle hidden"></span>
-
 				</div>
+			</div>
 
+			<div class="photo-details-group photo-details-group3">
 				<div class="field-wrap required">
 
 					<label for="description"><?php echo $desc_label ?: ''; ?></label>
@@ -176,6 +180,17 @@ $upload_nonce = wp_create_nonce( 'upload_photo' );
 					<span><?php echo $desc_description ?: ''; ?></span>
 					<span class="glyphicon glyphicon-ok-circle hidden"></span>
 					<span class="glyphicon glyphicon-remove-circle hidden"></span>
+
+				</div>
+
+				<div class="field-wrap">
+
+					<label for="competition"><?php echo $competition_label ?: ''; ?></label>
+					<label class="cb-label">
+						<input type="checkbox" id="competition" />
+						<span><?php echo $competition_placeholder ?: ''; ?></span>
+					</label>
+					<span><?php echo $competition_description ?: ''; ?></span>
 
 				</div>
 			</div>
@@ -188,7 +203,8 @@ $upload_nonce = wp_create_nonce( 'upload_photo' );
 
 	<div class="btn-submit btn-submit-step2">
 
-		<div class="btn btn-blue submit-step"><?php echo $upload ?: ''; ?></div>
+		<div class="btn btn-blue submit-step submit-step-next" style="display: none;"><?php echo $next ?: ''; ?></div>
+		<div class="btn btn-blue submit-step submit-step-upload"><?php echo $upload ?: ''; ?></div>
 		<div class="loader">
 
 			<?php

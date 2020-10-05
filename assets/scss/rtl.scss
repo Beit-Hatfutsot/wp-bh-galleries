@@ -201,11 +201,12 @@
 				}
 			}
 
-			/**********/
-			/* step 2 */
-			/**********/
+			/************/
+			/* step 2/3 */
+			/************/
 
-			&.step2 {
+			&.step2,
+			&.step3 {
 				.photo-details {
 					.photo-details-fields {
 						float: right;
@@ -231,9 +232,22 @@
 									padding-right: 10px;
 								}
 
+								& > label.cb-label {
+									padding-left: 0;
+									padding-right: 41px;
+								}
+
 								& > span {
 									padding-left: 0;
 									padding-right: 10px;
+								}
+
+								/*****************/
+								/* common fields */
+								/*****************/
+
+								input[type="checkbox"] {
+									margin: 0 -31px 0 10px;
 								}
 
 								/*****************/
