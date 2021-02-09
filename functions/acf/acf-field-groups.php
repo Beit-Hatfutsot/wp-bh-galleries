@@ -4,7 +4,7 @@
  *
  * @author		Nir Goldberg
  * @package		functions
- * @version		1.2.0
+ * @version		1.2.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -601,6 +601,25 @@ acf_add_local_field_group(array(
 			'key' => 'field_5f60664348551',
 			'label' => 'Facebook Pixel Code',
 			'name' => 'acf-options_facebook_pixel_code',
+			'type' => 'text',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '',
+			'placeholder' => '',
+			'prepend' => '',
+			'append' => '',
+			'maxlength' => '',
+		),
+		array(
+			'key' => 'field_60225d3f237fd',
+			'label' => 'GTM ID',
+			'name' => 'acf-options_gtm_id',
 			'type' => 'text',
 			'instructions' => '',
 			'required' => 0,

@@ -4,7 +4,7 @@
  *
  * @author		Nir Goldberg
  * @package		views/header
- * @version		1.2.0
+ * @version		1.2.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -56,6 +56,13 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		 * Display Facebook Pixel code
 		 */
 		get_template_part( 'views/header/header', 'fb' );
+	?>
+
+	<?php
+		/**
+		 * Display GTM head
+		 */
+		BH_gtm_head();
 	?>
 
 </head>

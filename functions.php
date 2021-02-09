@@ -3,7 +3,7 @@
  * Functions
  *
  * @author		Nir Goldberg
- * @version		1.1.2
+ * @version		1.2.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -13,6 +13,9 @@ require_once( 'functions/config.php' );
 
 // theme support
 require_once( 'functions/theme.php' );
+
+// gtm
+require_once( 'functions/gtm.php' );
 
 // theme menus
 require_once( 'functions/menus.php' );
