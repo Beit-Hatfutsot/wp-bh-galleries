@@ -4,7 +4,7 @@
  *
  * @author		Nir Goldberg
  * @package		views/header
- * @version		1.2.1
+ * @version		1.2.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -23,8 +23,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<link rel="icon" href="<?php echo TEMPLATE; ?>/assets/images/general/favicon.ico" type="image/x-icon">
-	<link rel="shortcut icon" href="<?php echo TEMPLATE; ?>/assets/images/general/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="<?php echo TEMPLATE; ?>/assets/images/general/anu-favicon.png" type="image/x-icon">
+	<link rel="shortcut icon" href="<?php echo TEMPLATE; ?>/assets/images/general/anu-favicon.png" type="image/x-icon">
 
 	<?php
 		/**
