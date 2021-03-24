@@ -4,7 +4,7 @@
  *
  * @author		Nir Goldberg
  * @package		functions/admin
- * @version		1.0.0
+ * @version		1.2.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -21,11 +21,6 @@ function BH_admin_head() {
 
 	wp_enqueue_style( 'admin-general' );
 
-	?>
-		<link rel="icon" href="<?php echo TEMPLATE; ?>/images/general/favicon.ico" type="image/x-icon">
-		<link rel="shortcut icon" href="<?php echo TEMPLATE; ?>/images/general/favicon.ico" type="image/x-icon">
-	<?php
-
 }
 add_action( 'admin_head', 'BH_admin_head' );
 
@@ -40,11 +35,6 @@ add_action( 'admin_head', 'BH_admin_head' );
 function BH_login_screen() {
 
 	wp_enqueue_style( 'admin-login' );
-
-	?>
-		<link rel="icon" href="<?php echo TEMPLATE; ?>/images/general/favicon.ico" type="image/x-icon">
-		<link rel="shortcut icon" href="<?php echo TEMPLATE; ?>/images/general/favicon.ico" type="image/x-icon">
-	<?php
 
 }
 add_action( 'login_head', 'BH_login_screen' );
